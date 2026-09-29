@@ -8,6 +8,6 @@ import play.api.mvc._
 class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
   def index() = Action {
-    Ok(Json.obj("status" -> "ok"))
+    Ok(Json.obj("message" -> "Hello from ScavengerHunt!"))
   }
 }
