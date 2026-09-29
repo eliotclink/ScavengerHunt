@@ -7,6 +7,7 @@ lazy val root = (project in file("."))
     name := "ScavengerHunt",
     libraryDependencies ++= Seq(
       guice,
+      ws,
       "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1" % Test
     )
   )
