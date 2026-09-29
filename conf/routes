@@ -1,1 +1,2 @@
-GET  /  controllers.HomeController.index()
+GET   /                   controllers.HomeController.index()
+POST  /game-definitions   controllers.HomeController.createGameDefinition()
