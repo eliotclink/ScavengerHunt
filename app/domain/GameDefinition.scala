@@ -12,9 +12,9 @@ case class GameDefinition(
                            id: UUID = UUID.randomUUID(),
                            title: String,
                            definition: String,
-                           gameType: GameType
+                           gameType: GameType,
+                           steps: Vector[Step]
                          )
-
 
 case class Step(
                  clue: String,
