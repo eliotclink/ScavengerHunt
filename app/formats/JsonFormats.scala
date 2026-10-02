@@ -16,4 +16,5 @@ object JsonFormats:
   given Format[Location]       = Json.format[Location]
   given Format[GameDefinition] = Json.format[GameDefinition]
   given Format[Step]           = Json.format[Step]
+  given Format[User]           = Json.format[User]
 

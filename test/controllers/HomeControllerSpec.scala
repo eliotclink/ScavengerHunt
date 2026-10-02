@@ -34,6 +34,22 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
     }
   }
 
+  "POST /users" should {
+    "return 201 with the generated id" in {
+      val body = Json.obj(
+        "name" -> "Alice",
+        "icon" -> "avatar_1"
+      )
+      val request = FakeRequest(POST, "/users")
+        .withJsonBody(body)
+      val result = route(app, request).get
+
+      status(result) mustBe CREATED
+      contentType(result) mustBe Some("application/json")
+      (contentAsJson(result) \ "id").asOpt[String] mustBe defined
+    }
+  }
+
   "GET /" should {
     "return 200 with hello message" in {
       val result = route(app, FakeRequest(GET, "/")).get
