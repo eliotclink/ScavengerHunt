@@ -5,6 +5,8 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
     name := "ScavengerHunt",
+    Test / javaOptions += "-Dconfig.file=conf/test.conf",
+    Test / fork := true,
     libraryDependencies ++= Seq(
       guice,
       ws,
