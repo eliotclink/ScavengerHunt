@@ -10,10 +10,19 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
 
   "POST /game-definitions" should {
     "return 201 with the generated id" in {
+      val step = Json.obj(
+        "clue"      -> "Find the red door",
+        "solution"  -> "red_door",
+        "hint"      -> "Look near the entrance",
+        "hintIcon"  -> "door_icon",
+        "inputType" -> "QR_SCAN",
+        "location"  -> Json.obj("longitude" -> -0.1276, "latitude" -> 51.5074)
+      )
       val body = Json.obj(
         "title"      -> "Test Hunt",
         "definition" -> "A test scavenger hunt",
-        "gameType"   -> "TREASURE_HUNT"
+        "gameType"   -> "TREASURE_HUNT",
+        "steps"      -> Json.arr(step)
       )
       val request = FakeRequest(POST, "/game-definitions")
         .withJsonBody(body)
