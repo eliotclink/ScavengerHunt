@@ -1,7 +1,7 @@
 package services
 
 import domain.GameDefinition
-import javax.inject._
+import javax.inject.{Inject, Singleton}
 import repositories.GameRepository
 import scala.concurrent.Future
 

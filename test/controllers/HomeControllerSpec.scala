@@ -1,10 +1,10 @@
 package controllers
 
-import org.scalatestplus.play._
-import org.scalatestplus.play.guice._
-import play.api.libs.json._
-import play.api.test._
-import play.api.test.Helpers._
+import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.guice.GuiceOneAppPerTest
+import play.api.libs.json.Json
+import play.api.test.{FakeRequest, Injecting}
+import play.api.test.Helpers.{GET, POST, CREATED, OK, contentAsJson, contentType, route, status, writeableOf_AnyContentAsJson, writeableOf_AnyContentAsEmpty, defaultAwaitTimeout}
 
 class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
@@ -25,6 +25,22 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
         "steps"      -> Json.arr(step)
       )
       val request = FakeRequest(POST, "/game-definitions")
+        .withJsonBody(body)
+      val result = route(app, request).get
+
+      status(result) mustBe CREATED
+      contentType(result) mustBe Some("application/json")
+      (contentAsJson(result) \ "id").asOpt[String] mustBe defined
+    }
+  }
+
+  "POST /users" should {
+    "return 201 with the generated id" in {
+      val body = Json.obj(
+        "name" -> "Alice",
+        "icon" -> "avatar_1"
+      )
+      val request = FakeRequest(POST, "/users")
         .withJsonBody(body)
       val result = route(app, request).get
 

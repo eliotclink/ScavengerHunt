@@ -1,2 +1,3 @@
 GET   /                   controllers.HomeController.index()
 POST  /game-definitions   controllers.HomeController.createGameDefinition()
+POST  /users              controllers.HomeController.createUser()

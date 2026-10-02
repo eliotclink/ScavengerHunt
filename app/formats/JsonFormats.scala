@@ -1,7 +1,7 @@
 package formats
 
-import domain._
-import play.api.libs.json._
+import domain.{GameDefinition, GameInputType, GameType, Location, Step, User}
+import play.api.libs.json.{Format, JsError, JsString, JsSuccess, Json, Reads, Writes}
 
 object JsonFormats:
   private def enumFormat[T](valueOf: String => T): Format[T] = Format(
@@ -16,4 +16,5 @@ object JsonFormats:
   given Format[Location]       = Json.format[Location]
   given Format[GameDefinition] = Json.format[GameDefinition]
   given Format[Step]           = Json.format[Step]
+  given Format[User]           = Json.format[User]
 
