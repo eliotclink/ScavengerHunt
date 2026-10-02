@@ -2,11 +2,11 @@ package repositories
 
 import domain.GameDefinition
 import formats.JsonFormats.given
-import javax.inject._
+import javax.inject.{Inject, Singleton}
 import play.api.Configuration
-import play.api.libs.json._
+import play.api.libs.json.{JsObject, JsString, Json}
 import play.api.libs.ws.WSClient
-import play.api.libs.ws.JsonBodyWritables._
+import play.api.libs.ws.JsonBodyWritables.writeableOf_JsValue
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton

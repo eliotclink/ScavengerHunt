@@ -1,7 +1,7 @@
 package services
 
 import domain.User
-import javax.inject._
+import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton

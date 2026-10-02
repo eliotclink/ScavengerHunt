@@ -2,9 +2,9 @@ package controllers
 
 import domain.{GameDefinition, User}
 import formats.JsonFormats.given
-import javax.inject._
-import play.api.libs.json._
-import play.api.mvc._
+import javax.inject.{Inject, Singleton}
+import play.api.libs.json.Json
+import play.api.mvc.{Action, BaseController, ControllerComponents, Request}
 import services.{GameService, UserService}
 import scala.concurrent.ExecutionContext
 
