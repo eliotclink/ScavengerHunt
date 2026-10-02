@@ -1,6 +1,6 @@
 package formats
 
-import domain.{GameDefinition, GameInputType, GameType, Location, Step, User}
+import domain.{Game, GameDefinition, GameInputType, GameType, Location, Step, User}
 import play.api.libs.json.{Format, JsError, JsString, JsSuccess, Json, Reads, Writes}
 
 object JsonFormats:
@@ -17,4 +17,5 @@ object JsonFormats:
   given Format[GameDefinition] = Json.format[GameDefinition]
   given Format[Step]           = Json.format[Step]
   given Format[User]           = Json.format[User]
+  given Format[Game]           = Json.format[Game]
 
